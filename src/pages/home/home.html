@@ -1,0 +1,74 @@
+<ion-content>
+  <div [hidden]="connected">
+    <button ion-button block (click)="startScanning()">scan</button>
+    <ion-list-header>
+      Paired Devices
+    </ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let device of pairedDevices">
+        <div (click)="selectDevice(device.address)">
+          {{device.name}}
+        </div>
+      </ion-item>
+    </ion-list>
+    <button ion-button block (click)="disconnect()">Disconnect</button>
+    <ion-list-header>
+      Available Devices
+    </ion-list-header>
+    <ion-item *ngFor='let device of unpairedDevices'>
+      <div (click)="selectDevice(device.address)">
+        {{device.name}}
+      </div>
+    </ion-item>
+    <ion-spinner class="loadingSpinner" name="crescent" *ngIf="gettingDevices"></ion-spinner>
+  </div>
+  <!--[hidden]="!connected"-->
+  <div class="controlGrp">
+    <div class="controlBtn" (click)="activateMsg('solid')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/drl.png" />
+        <p class="controlBtn__text">Solid color</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('drl')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/drl.png" />
+        <p class="controlBtn__text">DRL</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('rainbow')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/rainbow.png" />
+        <p class="controlBtn__text">Rainbow</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('chase')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/chase.png" />
+        <p class="controlBtn__text">Chase</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('stars')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/stars.png" />
+        <p class="controlBtn__text">Stars</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('randomfill')">
+      <div class="controlBtn__content">
+        <img class="controlBtn__img" src="assets/imgs/ringShapes/randomfill.png" />
+        <p class="controlBtn__text">Random Fill</p>
+      </div>
+    </div>
+    <div class="controlBtn" (click)="activateMsg('off')">
+      <div class="controlBtn__content">
+        <div class="controlBtn__img"></div>
+        <p class="controlBtn__text">Off</p>
+      </div>
+    </div>
+    <button ion-button block (click)="activateMsgColor('color', '255,0,0,')">Make Red</button>
+    <button ion-button block (click)="activateMsgColor('color', '0,255,0,')">Make Blue</button>
+    <button ion-button block (click)="activateMsgColor('color', '0,0,255,')">Make Green</button>
+    <button ion-button block (click)="activateMsgColor('color', '255,255,255,')">Make White</button>
+  </div>
+</ion-content>
